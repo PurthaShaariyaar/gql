@@ -11,11 +11,12 @@ const AppContainer = styled.div`
   align-items: center;
 `;
 
-// Create a function styled with a component
+// Create an App function styled with a component
 function App() {
   return <AppContainer>
     Hello World!
   </AppContainer>
 }
 
+// Export the function
 export default App;

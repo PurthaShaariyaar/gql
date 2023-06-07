@@ -1,0 +1,10 @@
+schema: ./src/app/graphql/graphql-schema.json
+documents: './src/app/services/animeService/queries.ts'
+generates:
+  ./src/app/services/animeService/GetAnimePage.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      scalars:
+        DateTime: Date

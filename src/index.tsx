@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import './stylesheets/index.css';
 import App from './App';
+import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from './app/graphql';
 
 // Initialize the root to an HTML element
 const root = ReactDOM.createRoot(
@@ -15,7 +17,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ApolloProvider client={apolloClient}>
+        <App />
+      </ApolloProvider>
     </Provider>
   </React.StrictMode>
 );
