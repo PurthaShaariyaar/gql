@@ -1,6 +1,7 @@
 // Import necessary libraries
 import React from 'react';
 import styled from 'styled-components';
+import { HomePage } from './app/containers/HomePage';
 
 // Create a styled container
 const AppContainer = styled.div`
@@ -14,7 +15,7 @@ const AppContainer = styled.div`
 // Create an App function styled with a component
 function App() {
   return <AppContainer>
-    Hello World!
+    <HomePage />
   </AppContainer>
 }
 
