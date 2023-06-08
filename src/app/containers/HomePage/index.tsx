@@ -1,7 +1,10 @@
 // Import required libraries
-import React, { useEffect } from 'react';
+import React, { Dispatch, useEffect } from 'react';
 import styled from 'styled-components';
 import animeService from '../../services/animeService';
+import { GetAnimePageQuery } from '../../services/animeService/GetAnimePage';
+import { setAnimePage } from './homePageSlice';
+import { useAppDispatch } from '../../hooks';
 
 // Initialize a HomePage interface
 interface IHomePageProps {
@@ -17,8 +20,14 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const actionDispatch = (dispatch: Dispatch<any>) => ({
+  setAnimePage: (page: GetAnimePageQuery["Page"]) => dispatch(setAnimePage(page))
+});
+
 // Export HomePage function
 export function HomePage(props: IHomePageProps) {
+
+  const { setAnimePage } = actionDispatch(useAppDispatch());
 
   const fetchAnimePage = async () => {
     const animePage = await animeService.getAnimePage(0).catch((err) => {
@@ -26,6 +35,8 @@ export function HomePage(props: IHomePageProps) {
     });
 
     console.log("Anime page: ", animePage);
+    if(animePage)
+      setAnimePage(animePage);
   };
 
   useEffect(() => {
